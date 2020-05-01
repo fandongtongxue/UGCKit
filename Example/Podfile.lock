@@ -1,0 +1,93 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - FDFoundationObjC (1.0.1):
+    - MJExtension
+  - FDFullscreenPopGesture (1.1)
+  - FDUIKitObjC (1.0.5):
+    - FDFoundationObjC
+    - FDFullscreenPopGesture
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - SDWebImage
+    - YYKit
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MJExtension (3.2.1)
+  - MJRefresh (3.4.1)
+  - SDWebImage (5.7.3):
+    - SDWebImage/Core (= 5.7.3)
+  - SDWebImage/Core (5.7.3)
+  - TCBeautyPanel (0.1.3):
+    - ZipArchive
+  - TXLiteAVSDK_UGC (7.2.8932)
+  - UGCKit (0.1.0):
+    - AFNetworking (~> 3.0)
+    - FDFoundationObjC
+    - FDUIKitObjC
+    - MBProgressHUD
+    - SDWebImage
+    - TCBeautyPanel
+    - TXLiteAVSDK_UGC
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+  - ZipArchive (1.4.0)
+
+DEPENDENCIES:
+  - UGCKit (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - FDFullscreenPopGesture
+    - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MJRefresh
+    - SDWebImage
+    - TCBeautyPanel
+    - TXLiteAVSDK_UGC
+    - YYKit
+    - ZipArchive
+  "ssh://fandongtongxue@192.168.50.235/volume1/git/FDSpec.git":
+    - FDFoundationObjC
+    - FDUIKitObjC
+
+EXTERNAL SOURCES:
+  UGCKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  FDFoundationObjC: 4207bc16a19f1f8a465f2ea7dd0d5dc04e99cc1e
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  FDUIKitObjC: bc463ab11c6d3ebaa675faeb36af1496304c407c
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
+  MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
+  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
+  TCBeautyPanel: 49ae596ca07f51ef184a6b27a50489792e49273c
+  TXLiteAVSDK_UGC: 54d61bcd1d125b2def502df749b8d99afb3d8956
+  UGCKit: 9e21028f3b417665269d085842175344f46679ac
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
+
+PODFILE CHECKSUM: 8424a57a35e51125e94e5184c6b9a2832ffadabb
+
+COCOAPODS: 1.9.1

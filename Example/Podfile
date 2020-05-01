@@ -1,0 +1,17 @@
+#use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'ssh://fandongtongxue@192.168.50.235/volume1/git/FDSpec.git'
+#source 'http://git.bogokj.com/fandong/BogoSpec.git'
+
+platform :ios, '9.0'
+
+target 'UGCKit_Example' do
+  pod 'UGCKit', :path => '../'
+
+  target 'UGCKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
