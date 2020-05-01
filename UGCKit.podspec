@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UGCKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A short description of UGCKit.'
 
 # This description is used to generate tags and improve search results.
@@ -44,7 +44,5 @@ TODO: Add long description of the pod here.
   s.dependency 'AFNetworking', '~> 3.0'
   s.dependency 'MBProgressHUD'
   s.dependency 'SDWebImage'
-  s.dependency 'FDUIKitObjC'
-  s.dependency 'FDFoundationObjC'
   
 end
