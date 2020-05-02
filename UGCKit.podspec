@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UGCKit'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A short description of UGCKit.'
 
 # This description is used to generate tags and improve search results.
@@ -35,6 +35,8 @@ TODO: Add long description of the pod here.
    s.resource_bundles = {
      'UGCKit' => ['UGCKit/Assets/*','UGCKit/Assets/*.lproj/*']
    }
+   
+   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64', }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
