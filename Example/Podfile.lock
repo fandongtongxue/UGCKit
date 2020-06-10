@@ -18,10 +18,10 @@ PODS:
   - SDWebImage (5.7.3):
     - SDWebImage/Core (= 5.7.3)
   - SDWebImage/Core (5.7.3)
-  - TCBeautyPanel (0.1.4):
+  - TCBeautyPanel (0.1.6):
     - ZipArchive
   - TXLiteAVSDK_UGC (7.2.8932)
-  - UGCKit (0.1.0):
+  - UGCKit (0.1.2):
     - AFNetworking (~> 3.0)
     - MBProgressHUD
     - SDWebImage
@@ -49,11 +49,11 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
-  TCBeautyPanel: e21564ed917dfd141dad89f7dc78986014258b7a
+  TCBeautyPanel: 81863024a5f057481a10179ccaf61a2ba210bef9
   TXLiteAVSDK_UGC: 54d61bcd1d125b2def502df749b8d99afb3d8956
-  UGCKit: 90d3696307f5d027b37c3506731f07739a2a5d81
+  UGCKit: 56a3dca224c276ffb9c022890dea27337e9964b0
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 8424a57a35e51125e94e5184c6b9a2832ffadabb
+PODFILE CHECKSUM: ef5afa29d38ee982540b2ac6fd7a731c1d72a661
 
 COCOAPODS: 1.9.1

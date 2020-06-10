@@ -1,8 +1,6 @@
 #use_frameworks!
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'ssh://fandongtongxue@192.168.50.235/volume1/git/FDSpec.git'
-#source 'http://git.bogokj.com/fandong/BogoSpec.git'
 
 platform :ios, '9.0'
 
