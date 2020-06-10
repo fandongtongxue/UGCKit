@@ -15,7 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [TXUGCBase setLicenceURL:@"" key:@""];
+    [TXUGCBase setLicenceURL:@"http://license.vod2.myqcloud.com/license/v1/b9c4190bec109303af70d28f8623236c/TXUgcSDK.licence" key:@"4455812430ce35c17ea78ee79f7071e1"];
     TCMainViewController *vc = [[TCMainViewController alloc]init];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
