@@ -15,18 +15,18 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - MBProgressHUD (1.2.0)
-  - SDWebImage (5.7.3):
-    - SDWebImage/Core (= 5.7.3)
-  - SDWebImage/Core (5.7.3)
-  - TCBeautyPanel (0.1.6):
+  - SDWebImage (5.8.0):
+    - SDWebImage/Core (= 5.8.0)
+  - SDWebImage/Core (5.8.0)
+  - TCBeautyPanel (0.1.5):
     - ZipArchive
-  - TXLiteAVSDK_UGC (7.2.8932)
-  - UGCKit (0.1.2):
+  - TXLiteAVSDK_Professional (7.2.8940)
+  - UGCKit (0.1.3):
     - AFNetworking (~> 3.0)
     - MBProgressHUD
     - SDWebImage
     - TCBeautyPanel
-    - TXLiteAVSDK_UGC
+    - TXLiteAVSDK_Professional
   - ZipArchive (1.4.0)
 
 DEPENDENCIES:
@@ -38,7 +38,7 @@ SPEC REPOS:
     - MBProgressHUD
     - SDWebImage
     - TCBeautyPanel
-    - TXLiteAVSDK_UGC
+    - TXLiteAVSDK_Professional
     - ZipArchive
 
 EXTERNAL SOURCES:
@@ -48,10 +48,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
-  TCBeautyPanel: 81863024a5f057481a10179ccaf61a2ba210bef9
-  TXLiteAVSDK_UGC: 54d61bcd1d125b2def502df749b8d99afb3d8956
-  UGCKit: 56a3dca224c276ffb9c022890dea27337e9964b0
+  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
+  TCBeautyPanel: e7129322ef85f72eaba9503f1e30a853784c6be7
+  TXLiteAVSDK_Professional: 4afe0775eeff059219964472fd4fa0f1ea4ca860
+  UGCKit: d88b0f76f550b53370cc4545d777b2e35cc47d13
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
 PODFILE CHECKSUM: ef5afa29d38ee982540b2ac6fd7a731c1d72a661
