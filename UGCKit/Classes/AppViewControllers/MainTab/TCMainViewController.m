@@ -13,7 +13,7 @@
 #import "UIView+Additions.h"
 #import "TCNavigationController.h"
 #import "PhotoUtil.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitWrapper.h"
 #import "Mem.h"
 

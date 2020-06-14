@@ -3,7 +3,7 @@
 #import "UGCKitPlayerView.h"
 #import "UGCKit_UIViewAdditions.h"
 #import <AVFoundation/AVFoundation.h>
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 #define playBtnWidth   34
 #define playBtnHeight  46

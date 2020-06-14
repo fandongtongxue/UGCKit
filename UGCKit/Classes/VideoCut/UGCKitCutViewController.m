@@ -1,6 +1,6 @@
 // Copyright (c) 2019 Tencent. All rights reserved.
 
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitCutViewController.h"
 #import <MediaPlayer/MPMediaPickerController.h>
 #import <AVFoundation/AVFoundation.h>

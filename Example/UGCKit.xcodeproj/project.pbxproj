@@ -246,7 +246,7 @@
 				ORGANIZATIONNAME = fandongtongxue;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = ZLN5K59YB7;
+						DevelopmentTeam = F9N98X7P4L;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -500,13 +500,13 @@
 			baseConfigurationReference = 91292046FFF2ECA5ADDA9CB7 /* Pods-UGCKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZLN5K59YB7;
+				DEVELOPMENT_TEAM = F9N98X7P4L;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UGCKit/UGCKit-Prefix.pch";
 				INFOPLIST_FILE = "UGCKit/UGCKit-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.buguDY.douyin;
+				PRODUCT_BUNDLE_IDENTIFIER = me.fandong.UGCKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
@@ -518,13 +518,13 @@
 			baseConfigurationReference = 3595C90891746D4259A67EA2 /* Pods-UGCKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZLN5K59YB7;
+				DEVELOPMENT_TEAM = F9N98X7P4L;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UGCKit/UGCKit-Prefix.pch";
 				INFOPLIST_FILE = "UGCKit/UGCKit-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.buguDY.douyin;
+				PRODUCT_BUNDLE_IDENTIFIER = me.fandong.UGCKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;

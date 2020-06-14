@@ -1,7 +1,7 @@
 // Copyright (c) 2019 Tencent. All rights reserved.
 
 #import <UIKit/UIKit.h>
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitEffectInfo.h"
 
 @protocol UGCKitEffectSelectViewDelegate <NSObject>

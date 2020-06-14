@@ -5,7 +5,7 @@
 #import <Photos/Photos.h>
 #import "UGCKitEditViewController.h"
 #import "UGCKitBGMListViewController.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitPlayerView.h"
 #import "UGCKitVideoRangeSlider.h"
 #import "UGCKitVideoRangeConst.h"
@@ -28,7 +28,7 @@
 #import "UGCKitReporterInternal.h"
 #import "UGCKitVideoEffectManager.h"
 #import "UGCKitLocalization.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitMem.h"
 
 typedef  NS_ENUM(NSInteger,TimeType)

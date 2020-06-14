@@ -4,7 +4,7 @@
 #import <Photos/Photos.h>
 #import "UGCKitReporterInternal.h"
 #import "UGCKitMem.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitPieProgressView.h"
 @interface UGCKitAssetLoadingController () <TXVideoJoinerListener> {
     BOOL  _loadingIsInterrupt;

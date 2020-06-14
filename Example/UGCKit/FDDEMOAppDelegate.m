@@ -8,7 +8,7 @@
 
 #import "FDDEMOAppDelegate.h"
 #import "TCMainViewController.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 @implementation FDDEMOAppDelegate
 

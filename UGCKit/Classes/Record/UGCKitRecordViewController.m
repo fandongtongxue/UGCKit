@@ -2,7 +2,7 @@
 #import "UGCKitRecordViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <TCBeautyPanel/TCBeautyPanel.h>
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitMem.h"
 #import "UGCKitMediaPickerViewController.h"
 #import "UGCKitEditViewController.h"
@@ -20,7 +20,7 @@
 #import "UGCKitConstants.h"
 #import <objc/runtime.h>
 #import "UGCKitReporterInternal.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 static const CGFloat BUTTON_CONTROL_SIZE = 40;
 static const CGFloat AudioEffectViewHeight = 150;

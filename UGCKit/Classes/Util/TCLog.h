@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 /**
  * 获取RTMP SDK内部log，并保存到文件

@@ -5,7 +5,7 @@
 #import "UGCKitVideoRangeSlider.h"
 #import "UGCKitColorMacro.h"
 #import "UGCKit_UIViewAdditions.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import <CoreImage/CoreImage.h>
 
 @interface UGCKitVideoCutView ()<VideoRangeSliderDelegate>

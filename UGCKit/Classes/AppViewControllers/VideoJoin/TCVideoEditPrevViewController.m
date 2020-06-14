@@ -7,7 +7,7 @@
 //
 
 #import "TCVideoEditPrevViewController.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "ColorMacro.h"
 #import "UIView+Additions.h"

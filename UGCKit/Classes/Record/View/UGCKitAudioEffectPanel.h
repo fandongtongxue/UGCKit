@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UGCKitTheme.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

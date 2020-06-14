@@ -2,7 +2,7 @@
 
 #import "UGCKitRecordControlView.h"
 #import "UGCKitSmallButton.h"
-#import <TXLiteAVSDK_UGC/TXLiteAVSDK.h>
+#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
 #import "UGCKitVerticalButton.h"
 #import "UGCKitLabel.h"
 #import "UGCKitLocalization.h"
