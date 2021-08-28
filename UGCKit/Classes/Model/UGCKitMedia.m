@@ -1,7 +1,7 @@
 // Copyright (c) 2019 Tencent. All rights reserved.
 
 #import "UGCKitMedia.h"
-#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
+#import "SDKHeader.h"
 
 @interface UGCKitMedia ()
 {

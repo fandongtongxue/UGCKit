@@ -5,7 +5,7 @@
 #import <Photos/Photos.h>
 #import "UGCKitEditViewController.h"
 #import "UGCKitBGMListViewController.h"
-#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
+#import "SDKHeader.h"
 #import "UGCKitPlayerView.h"
 #import "UGCKitVideoRangeSlider.h"
 #import "UGCKitVideoRangeConst.h"
@@ -28,7 +28,7 @@
 #import "UGCKitReporterInternal.h"
 #import "UGCKitVideoEffectManager.h"
 #import "UGCKitLocalization.h"
-#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
+#import "SDKHeader.h"
 #import "UGCKitMem.h"
 
 typedef  NS_ENUM(NSInteger,TimeType)
@@ -135,7 +135,9 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _videoAsset = asset.videoAsset;
+#ifdef DEBUG
         NSAssert(_videoAsset, @"asset is nil");
+#endif
         _config = config ?: [[UGCKitEditConfig alloc] init];
         _theme = theme ?: [UGCKitTheme sharedTheme];
         _generateMode = _config.generateMode;
@@ -181,7 +183,7 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
 {
     [super viewWillAppear:animated];
     _navigationBarHidden = self.navigationController.navigationBar.hidden;
-    self.navigationController.navigationBar.hidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]){
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
@@ -217,9 +219,19 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
     if (_generationView && !_generationView.hidden) {
         [_ugcEdit resumeGenerate];
     }else{
-        [_ugcEdit resumePlay];
-        [self setPlayBtn:YES];
-        _isPlay = YES;
+        UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+        BOOL shouldResume = rootVC == self;
+        if ([rootVC isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *nav = (UINavigationController *)rootVC;
+            if ([[nav viewControllers] lastObject] == self) {
+                shouldResume = YES;
+            }
+        }
+        if (shouldResume) {
+            [_ugcEdit resumePlay];
+            [self setPlayBtn:YES];
+            _isPlay = YES;
+        }
     }
 }
 
@@ -399,7 +411,7 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
     
     [_ugcEdit setVideoAsset:_videoAsset];
     [_ugcEdit setRenderRotation:(int)_config.rotation * 90];
-//    UIImage *waterimage = [[UGCKitTheme sharedTheme] imageNamed:@"watermark"];
+//    UIImage *waterimage = [UIImage imageNamed:@"watermark"];
 //    [_ugcEdit setWaterMark:waterimage normalizationFrame:CGRectMake(0.01, 0.01, 0.3 , 0)];
 
     [_ugcEdit setTailWaterMark:_config.tailWatermark.image normalizationFrame:_config.tailWatermark.frame  duration:_config.tailWatermark.duration];
@@ -637,6 +649,7 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
         nv.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:nv animated:YES completion:nil];
         [_bgmListVC loadBGMList];
+        [_bgmListVC clearSelectStatus];
     }
 }
 
@@ -1292,7 +1305,7 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
             [self removeAllPasterViewFromSuperView];
             if (_effectSelectIndex == _pasterEffectArray.count - 1) {
                 _pasterAddView.hidden = NO;
-                [_pasterAddView setUGCKitPasterType:UGCKitPasterType_Animate];
+                [_pasterAddView setUGCKitPasterType:UGCKitPasterTtemType_Paster];
             }else{
                 UGCKitVideoPasterInfo* pasterInfo = _videoPasterInfoList[_effectSelectIndex];
                 [_videoPreview addSubview:pasterInfo.pasterView];
@@ -1306,7 +1319,7 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
             [self removeAllTextFieldFromSuperView];
             if (_effectSelectIndex == _textEffectArray.count - 1) {
                 _pasterAddView.hidden = NO;
-                [_pasterAddView setUGCKitPasterType:UGCKitPasterType_Qipao];
+                [_pasterAddView setUGCKitPasterType:UGCKitPasterTtemType_Qipao];
             }else{
                 UGCKitVideoTextInfo* textInfo = _videoTextInfoList[_effectSelectIndex];
                 [_videoPreview addSubview:textInfo.textField];
@@ -1585,10 +1598,16 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
 - (void)onVideoRangeLeftChangeEnded:(UGCKitVideoRangeSlider *)sender
 {
     if (_effectSelectType == EffectSelectType_Paster) {
+        if (_effectSelectIndex < 0 || _effectSelectIndex >= _videoPasterInfoList.count) {
+            return;
+        }
         UGCKitVideoPasterInfo *info = _videoPasterInfoList[_effectSelectIndex];
         info.startTime = sender.leftPos;
     }
     else if (_effectSelectType == EffectSelectType_Text) {
+        if (_effectSelectIndex < 0 || _effectSelectIndex >= _videoTextInfoList.count) {
+            return;
+        }
         UGCKitVideoTextInfo *info = _videoTextInfoList[_effectSelectIndex];
         info.startTime = sender.leftPos;
     }
@@ -1603,12 +1622,16 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
 - (void)onVideoRangeRightChangeEnded:(UGCKitVideoRangeSlider *)sender
 {
     if (_effectSelectType == EffectSelectType_Paster) {
-        UGCKitVideoPasterInfo *info = _videoPasterInfoList[_effectSelectIndex];
-        info.endTime = sender.rightPos;
+        if (_effectSelectIndex < _videoPasterInfoList.count && _effectSelectIndex >= 0) {
+            UGCKitVideoPasterInfo *info = _videoPasterInfoList[_effectSelectIndex];
+            info.endTime = sender.rightPos;
+        }
     }
     else if (_effectSelectType == EffectSelectType_Text) {
-        UGCKitVideoTextInfo *info = _videoTextInfoList[_effectSelectIndex];
-        info.endTime = sender.rightPos;
+        if (_effectSelectIndex < _videoTextInfoList.count && _effectSelectIndex >= 0) {
+            UGCKitVideoTextInfo *info = _videoTextInfoList[_effectSelectIndex];
+            info.endTime = sender.rightPos;
+        }
     }
 }
 
@@ -1656,6 +1679,11 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
 {
     _playTime = pos;
     _timeLabel.text = [NSString stringWithFormat:@"%02d:%02d",(int)_playTime / 60 , (int)_playTime % 60];
+    //关闭特效面板不响应 seek
+    if (_isHidingEffectView ||
+        (self->_effectView.frame.origin.y > (self.view.ugckit_height - 205 * kScaleY))) {
+        return;
+    }
     [_ugcEdit previewAtTime:_playTime];
     [self setPlayBtn:NO];
 }
@@ -1672,11 +1700,13 @@ typedef NS_ENUM(NSInteger,EffectSelectType)
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     if (path == nil) {
-        _bottomMenu.hidden = NO;
         [self resetConfirmBtn];
         [self startPlayFromTime:0 toTime:_duration];
         return;
     }else{
+        if (_BGMPath) {
+            [self onBtnMusicStoped];
+        }
         _BGMPath = path;
     }
     __weak __typeof(self) ws = self;

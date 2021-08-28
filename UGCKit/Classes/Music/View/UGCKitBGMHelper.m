@@ -25,6 +25,7 @@ typedef void(^DownLoadCallback)(float percent, NSString* url);
     NSURLSession *_urlSession;
     NSOperationQueue *_sessionDelegateQueue;
     TCBGMElement* _currentEle;
+    
     NSString* _bgmPath;
     NSMutableDictionary<NSURLSessionTask *, TCBGMDownloadTask*> *_taskDictionary;
 }
@@ -144,7 +145,7 @@ typedef void(^DownLoadCallback)(float percent, NSString* url);
 
 }
 
--(void) initBGMListWithJsonFile:(NSString* _Nonnull)url{
+-(void)initBGMListWithJsonFile:(NSString* _Nonnull)url{
     if(url == nil)return;
     __weak UGCKitBGMHelper* weak = self;
     void (^task)(void) = ^{
@@ -182,7 +183,7 @@ typedef void(^DownLoadCallback)(float percent, NSString* url);
     if(strong != nil){
         if([[_currentEle netUrl] isEqualToString:[current netUrl]]){
             if([_currentTask state] == NSURLSessionTaskStateRunning){
-                BGMLog(@"暂停：%@", [current name]);
+                BGMLog(@"%@",  @"暂停：%@", [current name]);
                 [_currentTask suspend];
                 return;
             }
@@ -205,6 +206,10 @@ typedef void(^DownLoadCallback)(float percent, NSString* url);
         NSString* url = [current netUrl];
 
         __block NSString* justName = [current name];
+        if (0 == justName.pathExtension.length) {
+            NSString *bgmExtension = url.pathExtension.length ? url.pathExtension : @"mp3";
+            justName = [justName stringByAppendingPathExtension:bgmExtension];
+        }
         if (needOverride) {
             localListPath = [_bgmPath stringByAppendingPathComponent:justName];
         } else {

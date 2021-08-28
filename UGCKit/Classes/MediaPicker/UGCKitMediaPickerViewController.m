@@ -48,7 +48,11 @@
         if (theme.resourceBundle) {
             self.assetBundle = theme.resourceBundle;
         } else {
-            self.assetBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:NSClassFromString(@"UGCKit")] pathForResource:@"UGCKit" ofType:@"bundle"]];
+            self.assetBundle = [NSBundle bundleForClass:[self class]];
+            NSString *bundlePath = [self.assetBundle pathForResource:@"UGCKitMediaPicker" ofType:@"bundle"];
+            if (bundlePath) {
+                self.assetBundle = [NSBundle bundleWithPath:bundlePath];
+            }
         }
         [self setUpAlbumsViewController];
         self.view.backgroundColor = _theme.backgroundColor;
@@ -86,7 +90,7 @@
 - (void)setUpAlbumsViewController
 {
     // Add UGCKitAlbumsViewController as a child
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"UGCKit" ofType:@"bundle"];
+    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"UGCKitResources" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath]; // bundle 不存在时会返回nil, 会从主bundle中找
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"UGCKitMediaPicker" bundle:bundle];

@@ -186,9 +186,17 @@ static void setImageForKey(id self, SEL selector, UIImage *image) {
 
 - (instancetype)init {
     if (self = [super init]) {
-        NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:NSClassFromString(@"UGCKit")] pathForResource:@"UGCKit" ofType:@"bundle"]];
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"UGCKit"
+                                                                 ofType:@"bundle"];
+        NSBundle *bundle = [NSBundle bundleWithPath:resourcePath];
         _resourceBundle = bundle ?: [NSBundle mainBundle];
-        _beautyPanelResourceBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:NSClassFromString(@"TCBeautyPanel")] pathForResource:@"TCBeautyPanel" ofType:@"bundle"]];
+        NSString *beautyPanelResPath = [bundle pathForResource:@"TCBeautyPanel"
+                                                        ofType:@"bundle"];
+        if (!beautyPanelResPath) {
+            beautyPanelResPath = [[NSBundle mainBundle] pathForResource:@"TCBeautyPanel"
+        ofType:@"bundle"];
+        }
+        _beautyPanelResourceBundle = [NSBundle bundleWithPath:beautyPanelResPath];
 
         _backgroundColor = [UIColor colorWithRed:0.12 green:0.15 blue:0.19 alpha:1];
         _editPanelBackgroundColor = [UIColor blackColor];
@@ -235,7 +243,9 @@ static void setImageForKey(id self, SEL selector, UIImage *image) {
     } else if ([filter isEqualToString:@"white"]) {
         imageName = @"fwhite";
     }
-    return [[UGCKitTheme sharedTheme] imageNamed:imageName];
+    return [UIImage imageNamed:imageName
+                      inBundle:_beautyPanelResourceBundle
+ compatibleWithTraitCollection:nil];
 }
 
 - (UIImage *)imageNamed:(NSString *)name {
@@ -361,8 +371,8 @@ static void setImageForKey(id self, SEL selector, UIImage *image) {
     return [self effectIconWithPath:@"jump" frameDuration: 1.0 / 10];
 }
 
-- (NSString *)goodLuckVideoFilePath {
-    return [_beautyPanelResourceBundle pathForResource:@"goodluck" ofType:@"mp4"];
+- (NSURL *)goodLuckVideoFileURL {
+    return [_beautyPanelResourceBundle URLForResource:@"goodluck" withExtension:@"mp4"];
 }
 
 @end

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'UGCKit'
-  s.version          = '0.1.5'
+  s.version          = '1.0.20210828'
   s.summary          = 'A short description of UGCKit.'
 
 # This description is used to generate tags and improve search results.
@@ -33,18 +33,12 @@ TODO: Add long description of the pod here.
   s.source_files = 'UGCKit/Classes/**/*'
   
    s.resource_bundles = {
-     'UGCKit' => ['UGCKit/Assets/*','UGCKit/Assets/*.lproj/*']
+     'UGCKit' => ['UGCKit/Assets/*']
    }
-   
-   s.xcconfig     = { 'VALID_ARCHS' => 'armv7 arm64 x86_64', }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'TCBeautyPanel'
-  s.dependency 'TXLiteAVSDK_Professional'
-  s.dependency 'AFNetworking', '~> 3.0'
-  s.dependency 'MBProgressHUD'
-  s.dependency 'SDWebImage'
-  
+  s.dependency 'TXLiteAVSDK_Professional', '~> 9.0.10433'
+  s.dependency 'TCBeautyPanel', '~> 1.0.20210827'
 end

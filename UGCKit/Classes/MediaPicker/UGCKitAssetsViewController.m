@@ -134,7 +134,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     // Configure navigation item
     self.navigationItem.title = self.assetCollection.localizedTitle;
     self.navigationItem.prompt = self.imagePickerController .config.prompt;
-    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     // Configure collection view
     self.collectionView.allowsMultipleSelection = self.imagePickerController.allowsMultipleSelection;
     
@@ -204,6 +204,11 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 - (PHCachingImageManager *)imageManager
 {
     if (_imageManager == nil) {
+        PHAuthorizationStatus photoAuthorStatus = [PHPhotoLibrary authorizationStatus];
+        if (photoAuthorStatus == PHAuthorizationStatusDenied
+            || photoAuthorStatus == PHAuthorizationStatusNotDetermined) {
+            return nil;
+        }
         _imageManager = [PHCachingImageManager new];
     }
     
@@ -241,12 +246,8 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 
 - (IBAction)done:(id)sender
 {
-    [self tellDelegateWithAssets:self.imagePickerController.selectedAssets.array];
-
-//    if ([self.imagePickerController.delegate respondsToSelector:@selector(qb_imagePickerController:didFinishPickingAssets:)]) {
-//        [self.imagePickerController.delegate qb_imagePickerController:self.imagePickerController
-//                                               didFinishPickingAssets:self.imagePickerController.selectedAssets.array];
-//    }
+    NSArray* assets = [self.imagesController currentAssets];
+    [self tellDelegateWithAssets:assets];
 }
 
 - (IBAction)cancel:(id)sender
@@ -263,12 +264,12 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     self.imagesController = [[UGCKitImageScrollerViewController alloc] initWithImageManage:self.imageManager];
     self.imagesController.closeIcon = _theme.closeIcon;
     __weak __typeof(self) wself = self;
-    self.imagesController.onRemoveHandler = ^(NSUInteger index) {
-        PHAsset *removedAsset = wself.imagePickerController.selectedAssets[index];
+    self.imagesController.onRemoveHandler = ^(PHAsset *removedAsset) {
         NSUInteger indexOfCollection = [wself.fetchResult indexOfObject:removedAsset];
         NSMutableOrderedSet *selectedAssets = wself.imagePickerController.selectedAssets;
-        [selectedAssets removeObjectAtIndex:index];
+        [selectedAssets removeObject:removedAsset];
         [wself updateSelectionInfo];
+        [wself updateDoneButtonState];
         [wself.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:indexOfCollection inSection:0] animated:YES];
 
     };
@@ -701,7 +702,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     NSUInteger index = [selectedAssets indexOfObject:asset];
     [selectedAssets removeObject:asset];
     if (index != NSNotFound) {
-        [self.imagesController removeAssetAtIndex:index];
+        [self.imagesController removeAsset:asset];
     }
     self.lastSelectedItemIndexPath = nil;
     
@@ -729,6 +730,14 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     }
     
     CGFloat width = (CGRectGetWidth(self.view.frame) - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
+    if (width < 0.000001) {
+        /// bug fix：iPhone6上偶现width <= 0，导致崩溃
+        CGRect frame = self.view.window ? self.view.window.frame : UIScreen.mainScreen.bounds;
+        width = (CGRectGetWidth(frame) - 2.0 * (numberOfColumns - 1)) / numberOfColumns;
+        if (width < 0.000001) {
+            width = 120.0;
+        }
+    }
     
     return CGSizeMake(width, width);
 }

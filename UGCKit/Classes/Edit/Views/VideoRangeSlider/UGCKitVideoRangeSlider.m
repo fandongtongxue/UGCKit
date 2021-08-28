@@ -46,7 +46,7 @@
         scroll;
     });
     self.middleLine = ({
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UGCKitTheme sharedTheme] imageNamed:@"mline.png"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mline.png"]];
         [self addSubview:imageView];
         imageView;
     });

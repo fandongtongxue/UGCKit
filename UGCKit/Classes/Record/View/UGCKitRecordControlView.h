@@ -3,7 +3,7 @@
 
 #import "UGCKitSlideButton.h"
 #import "UGCKitTheme.h"
-#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
+#import "SDKHeader.h"
 #import "UGCKitVideoRecordProcessView.h"
 #import "UGCKitSlideOptionControl.h"
 

@@ -1,59 +1,31 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
-    - AFNetworking/NSURLSession
-  - MBProgressHUD (1.2.0)
-  - SDWebImage (5.8.0):
-    - SDWebImage/Core (= 5.8.0)
-  - SDWebImage/Core (5.8.0)
-  - TCBeautyPanel (0.1.5):
-    - ZipArchive
-  - TXLiteAVSDK_Professional (7.2.8940)
-  - UGCKit (0.1.3):
-    - AFNetworking (~> 3.0)
-    - MBProgressHUD
-    - SDWebImage
-    - TCBeautyPanel
-    - TXLiteAVSDK_Professional
-  - ZipArchive (1.4.0)
+  - SSZipArchive (2.4.2)
+  - TCBeautyPanel (1.0.20210827):
+    - SSZipArchive (~> 2.4.2)
+  - TXLiteAVSDK_Professional (9.0.10433)
+  - UGCKit (1.0.20210828):
+    - TCBeautyPanel (~> 1.0.20210827)
+    - TXLiteAVSDK_Professional (~> 9.0.10433)
 
 DEPENDENCIES:
   - UGCKit (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - AFNetworking
-    - MBProgressHUD
-    - SDWebImage
+  trunk:
+    - SSZipArchive
     - TCBeautyPanel
     - TXLiteAVSDK_Professional
-    - ZipArchive
 
 EXTERNAL SOURCES:
   UGCKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
-  TCBeautyPanel: e7129322ef85f72eaba9503f1e30a853784c6be7
-  TXLiteAVSDK_Professional: 4afe0775eeff059219964472fd4fa0f1ea4ca860
-  UGCKit: d88b0f76f550b53370cc4545d777b2e35cc47d13
-  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
+  SSZipArchive: e7b4f3d9e780c2acc1764cd88fbf2de28f26e5b2
+  TCBeautyPanel: d98c3aec22f5674a4e475cbb976a59acc5cc7b3a
+  TXLiteAVSDK_Professional: b3b177c78bb08575fb5c2a85e9bcc061fbeba1d9
+  UGCKit: b26a44f76f6b662ad98b90497aad4262edd14a91
 
-PODFILE CHECKSUM: ef5afa29d38ee982540b2ac6fd7a731c1d72a661
+PODFILE CHECKSUM: 994fb308027ba113a1f8f21697ad7cb8dcbab702
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1

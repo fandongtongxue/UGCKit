@@ -2,8 +2,8 @@
 //  UGCKitTests.m
 //  UGCKitTests
 //
-//  Created by fandongtongxue on 04/24/2020.
-//  Copyright (c) 2020 fandongtongxue. All rights reserved.
+//  Created by fandongtongxue on 08/28/2021.
+//  Copyright (c) 2021 fandongtongxue. All rights reserved.
 //
 
 @import XCTest;

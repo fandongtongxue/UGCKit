@@ -1,6 +1,6 @@
 // Copyright (c) 2019 Tencent. All rights reserved.
 
-#import <TXLiteAVSDK_Professional/TXLiteAVSDK.h>
+#import "SDKHeader.h"
 #import "UGCKitCutViewController.h"
 #import <MediaPlayer/MPMediaPickerController.h>
 #import <AVFoundation/AVFoundation.h>
@@ -80,7 +80,7 @@ typedef  NS_ENUM(NSInteger,VideoType)
 {
     [super viewWillAppear:animated];
     _navigationBarHidden = self.navigationController.navigationBar.hidden;
-    self.navigationController.navigationBar.hidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
@@ -316,6 +316,7 @@ typedef  NS_ENUM(NSInteger,VideoType)
             } else {
                 //使用快速剪切，速度快
                 _hasQuickGenerate = YES;
+                _hasNomalGenerate = NO;
                 [_ugcEdit quickGenerateVideo:VIDEO_COMPRESSED_720P videoOutputPath:_videoOutputPath];
             }
         }
@@ -518,6 +519,9 @@ typedef  NS_ENUM(NSInteger,VideoType)
 
 - (void)onVideoSeekChange:(UGCKitVideoRangeSlider *)sender seekToPos:(CGFloat)pos
 {
+    if (_generationView && _generationView.isHidden == NO) {
+        return;
+    }
     [_ugcEdit previewAtTime:pos];
     [_videoPreview setPlayBtn:NO];
 }

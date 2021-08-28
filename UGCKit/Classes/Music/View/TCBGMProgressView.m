@@ -1,7 +1,6 @@
 // Copyright (c) 2019 Tencent. All rights reserved.
 
 #import "TCBGMProgressView.h"
-#import "UGCKitTheme.h"
 
 @implementation TCBGMProgressView
 {
@@ -28,7 +27,7 @@
 - (void)setup {
     self.contentMode = UIViewContentModeRedraw;
     self.clipsToBounds = YES;
-    _bgImage = [[UGCKitTheme sharedTheme] imageNamed:@"music_select_normal"];
+    _bgImage = [UIImage imageNamed:@"music_select_normal"];
     _label = [[UILabel alloc] initWithFrame:self.bounds];
     _label.alpha = 0.5;
     self.opaque = YES;

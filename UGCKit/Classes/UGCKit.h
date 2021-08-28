@@ -29,5 +29,3 @@ FOUNDATION_EXPORT const unsigned char UGCKitVersionString[];
 #import <UGCKit/UGCKitVideoRangeSlider.h>
 #import <UGCKit/UGCKitRangeContent.h>
 #import <UGCKit/UGCKitPhotoTransitionToolbar.h>
-
-#define LocalString(key)  [[UGCKitTheme sharedTheme] localizedString:key]

@@ -15,7 +15,7 @@ typedef _UGCKitImageScrollerCellView CellClass;
 
 @interface UGCKitImageScrollerViewController () <UICollectionViewDelegateFlowLayout>
 {
-    NSMutableArray *_assets;
+    NSMutableArray<PHAsset *> *_assets;
 }
 @property (strong, nonatomic) PHCachingImageManager *imageManager;
 @end
@@ -36,6 +36,13 @@ static NSString * const reuseIdentifier = @"Cell";
     return self;
 }
 
+- (PHCachingImageManager *)imageManager {
+    if (!_imageManager) {
+        _imageManager = [[PHCachingImageManager alloc] init];
+    }
+    return _imageManager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _assets = [[NSMutableArray alloc] init];
@@ -45,16 +52,25 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - Public
+
+- (NSArray<PHAsset *> *)currentAssets {
+    if (_assets) {
+        return _assets;
+    } else {
+        return @[];
+    }
+}
+
 - (void)addAsset:(PHAsset *)asset {
     [_assets addObject:asset];
     [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:_assets.count-1 inSection:0]]];
 }
 
-- (void)removeAssetAtIndex:(NSUInteger)index
+- (void)removeAsset:(PHAsset *)asset
 {
+    NSUInteger index = [_assets indexOfObject:asset];
     [_assets removeObjectAtIndex:index];
     [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]];
-
 }
 #pragma mark <UICollectionViewDataSource>
 
@@ -74,15 +90,20 @@ static NSString * const reuseIdentifier = @"Cell";
         [cell.closeButton addTarget:self action:@selector(onRemoveItem:) forControlEvents:UIControlEventTouchUpInside];
     }
     cell.tag = indexPath.item;
+    PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
+    option.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+    option.networkAccessAllowed = YES;
     [self.imageManager requestImageForAsset:asset
                                  targetSize:cell.imageView.bounds.size
                                 contentMode:PHImageContentModeAspectFill
-                                    options:nil
+                                    options:option
                               resultHandler:^(UIImage *result, NSDictionary *info) {
-                                  if (cell.tag == indexPath.item) {
-                                      cell.imageView.image = result;
-                                  }
-                              }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (cell.tag == indexPath.item) {
+                cell.imageView.image = result;
+            }
+        });
+    }];
     return cell;
 }
 
@@ -114,9 +135,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
     if (indexPath) {
         NSUInteger index = indexPath.item;
-        [self removeAssetAtIndex:index];
+        PHAsset *asset = _assets[index];
+        [self removeAsset:asset];
         if (self.onRemoveHandler) {
-            self.onRemoveHandler(index);
+            self.onRemoveHandler(asset);
         }
     }
 }
