@@ -9,6 +9,10 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+Licence | Record
+------- | ------- 
+![](SnapShot/Licence.jpeg)|![](SnapShot/Record.jpeg)
+
 ## Requirements
 
 ## Installation
